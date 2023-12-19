@@ -19,3 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/obat',[ObatController::class,'index'])->name('obat.index');
+Route::get('/obat/tambah',[ObatController::class,'create'])->name('obat.create');
+Route::get('/obat/{obat}',[ObatController::class,'edit'])->name('obat.edit');
+Route::post('/obat/tambah',[ObatController::class,'store'])->name('obat.store');
+Route::put('/obat/{obat}',[ObatController::class,'update'])->name('obat.update');
+Route::delete('/obat/{obat}',[ObatController::class,'destroy'])->name('obat.delete');

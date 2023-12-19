@@ -1,47 +1,40 @@
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <title>Welcome To Cleopatra</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @notifyCss
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('title')
+    @stack('style')
+
 </head>
 
-<body class="bg-gray-100">
+<body>
 
+    <div class="antialiased bg-gray-50">
+        {{-- Navbar --}}
+        <x-navbar />
+        <!-- Sidebar -->
 
-    <!-- start navbar -->
-   <x-navbar/>
-    <!-- end navbar -->
+        <x-sidebar />
 
-
-    <!-- strat wrapper -->
-    <div class="h-screen flex flex-row flex-wrap">
-
-        <!-- start sidebar -->
-     
-        <x-sidebar/>
-        <!-- end sidbar -->
-
-        <!-- strat content -->
-        <div class="bg-gray-100 flex-1 p-6 md:mt-16 ml-64 md:ml-0">
+        <main class="pt-20 px-4 bg-slate-50 h-screen ml-0 md:ml-64 ">
+            <x-notify::notify />
             @yield('content')
-
-        </div>
-        <!-- end content -->
-
+        </main>
     </div>
-    <!-- end wrapper -->
 
-    <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
-    <!-- end script -->
 
+    @stack('modal')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    @stack('script')
+
+
+    @notifyJs
 </body>
 
 </html>
