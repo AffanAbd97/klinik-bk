@@ -4,6 +4,6 @@
     
   
 
- <div> dashboard Home</div>
+ <div> RIWAYAT PASIEN</div>
             
 @endsection

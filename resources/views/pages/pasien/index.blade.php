@@ -4,6 +4,6 @@
     
   
 
- <div> dashboard Home</div>
+ <div> Pasien</div>
             
 @endsection

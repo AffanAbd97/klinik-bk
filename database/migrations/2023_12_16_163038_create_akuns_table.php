@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('akun', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('nama');
             $table->string('email');
             $table->string('password');
             $table->enum('peran', ['Admin', 'Dokter']);
