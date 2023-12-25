@@ -7,3 +7,11 @@
  <div> dashboard Home</div>
             
 @endsection
+
+@section('title')
+    
+  
+
+ Dahboard | Poliklinik
+            
+@endsection

@@ -85,3 +85,7 @@
         </div>
     </section>
 @endsection
+
+@section('title')
+    Edit Poli | Poliklinik
+@endsection

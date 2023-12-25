@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('title')
     @stack('style')
-
+<title>@yield('title')</title>
 </head>
 
 <body>

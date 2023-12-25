@@ -87,3 +87,8 @@
       </section>    
    
 @endsection
+
+
+@section('title')
+    Edit Obat | Poliklinik
+@endsection

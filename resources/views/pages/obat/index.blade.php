@@ -49,3 +49,8 @@
 
     @livewire('obat-list')
 @endsection
+
+
+@section('title')
+   Data Obat | Poliklinik
+@endsection

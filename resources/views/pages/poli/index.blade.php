@@ -49,3 +49,8 @@
 
     @livewire('poli-list')
 @endsection
+
+
+@section('title')
+   Data Poli | Poliklinik
+@endsection
