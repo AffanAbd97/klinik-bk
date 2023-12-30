@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('nama');
             $table->string('alamat');
-            $table->string('no_hp,50');
+            $table->string('no_hp');
             $table->foreignUuid('id_poli')->references('id')->on('poli');
             $table->timestamps();
         });

@@ -18,7 +18,7 @@ class IsLogin
     {
         $session = Session::get('authenticate');
         if (!$session) {
-            return redirect()->route('login');
+            return redirect()->route('/');
         }
         return $next($request);
     }

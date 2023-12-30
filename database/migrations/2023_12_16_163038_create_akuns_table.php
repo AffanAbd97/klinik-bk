@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('email');
             $table->string('password');
-            $table->enum('peran', ['Admin', 'Dokter']);
+            $table->uuid('user_id')->nullable();
+            $table->enum('peran', ['Admin', 'Dokter','Pasien']);
             $table->timestamps();
         });
     }

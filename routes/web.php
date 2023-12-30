@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DokterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PoliController;
 use Illuminate\Support\Facades\Route;
@@ -18,12 +19,14 @@ use App\Http\Controllers\ObatController;
 
 
 
-
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
  
 Route::middleware('logedIn')->group(function () {
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return view('pages.index');
-    })->name('home');
+    })->name('dashboard');
     Route::get('/obat',[ObatController::class,'index'])->name('obat.index');
     Route::get('/obat/tambah',[ObatController::class,'create'])->name('obat.create');
     Route::get('/obat/{obat}',[ObatController::class,'edit'])->name('obat.edit');
@@ -36,8 +39,17 @@ Route::middleware('logedIn')->group(function () {
     Route::get('/poli/{poli}',[PoliController::class,'edit'])->name('poli.edit');
     Route::post('/poli/tambah',[PoliController::class,'store'])->name('poli.store');
     Route::put('/poli/{poli}',[PoliController::class,'update'])->name('poli.update');
-    Route::delete('/poli/{poli}',[PoliController::class,'destroy'])->name('poli.delete');
+    Route::delete('/poli/{poli}',[PoliController::class,'destroy'])->name('poli.delete');   
     
+
+    Route::get('/dokter',[DokterController::class,'index'])->name('dokter.index');
+    Route::get('/dokter/tambah',[DokterController::class,'create'])->name('dokter.create');
+    Route::get('/dokter/{dokter}',[DokterController::class,'edit'])->name('dokter.edit');
+    Route::post('/dokter/tambah',[DokterController::class,'store'])->name('dokter.store');
+    Route::put('/dokter/{dokter}',[DokterController::class,'update'])->name('dokter.update');
+    Route::delete('/dokter/{dokter}',[DokterController::class,'destroy'])->name('dokter.delete');  
+
+
     Route::get('/riwayat', function () {
         return view('pages.riwayat.index');
     })->name('riwayat');
@@ -48,6 +60,10 @@ Route::middleware('logedIn')->group(function () {
     })->name('pasien');
 });
 //obat
-Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::get('/auth/pasien',[LoginController::class,'login_pasien'])->name('login.pasien');
+Route::get('/auth/dokter',[LoginController::class,'login_dokter'])->name('login.dokter');
+Route::get('/auth/admin',[LoginController::class,'login_admin'])->name('login.admin');
+Route::get('/register/pasien',[LoginController::class,'register'])->name('register.pasien');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/register/pasien',[LoginController::class,'save'])->name('save.pasien');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
