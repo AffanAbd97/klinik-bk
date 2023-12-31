@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PoliController;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +60,13 @@ Route::middleware('logedIn')->group(function () {
     Route::get('/pasien', function () {
         return view('pages.pasien.index');
     })->name('pasien');
+
+    Route::get('/dashboard/jadwal',[JadwalController::class,'index'])->name('jadwal.index');  
+    Route::post('/dashboard/jadwal',[JadwalController::class,'store'])->name('jadwal.store'); 
+    Route::put('/dashboard/jadwal/{jadwal}',[JadwalController::class,'update'])->name('jadwal.update'); 
+    
+    
+    Route::get('/dashboard/dokter',[DashboardController::class,'dashboardDokter'])->name('dokter.home');  
 });
 //obat
 Route::get('/auth/pasien',[LoginController::class,'login_pasien'])->name('login.pasien');
