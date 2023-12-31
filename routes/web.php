@@ -67,6 +67,9 @@ Route::middleware('logedIn')->group(function () {
     
     
     Route::get('/dashboard/dokter',[DashboardController::class,'dashboardDokter'])->name('dokter.home');  
+    Route::get('/dashboard/pasien',[DashboardController::class,'dashboardPasien'])->name('pasien.home');  
+    Route::get('/dashboard/admin',[DashboardController::class,'dashboardAdmin'])->name('admin.home');  
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');  
 });
 //obat
 Route::get('/auth/pasien',[LoginController::class,'login_pasien'])->name('login.pasien');

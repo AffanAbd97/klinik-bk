@@ -30,26 +30,25 @@
                     <span class="self-center text-xl font-semibold whitespace-nowrap text-white">Poliklinik</span>
                 </a>
 
-              <div class="flex items-center justify-between gap-6">
-                @if (session()->get('authenticate'))
-                    
-                <a href="#" class="font-medium text-white  hover:underline">Dashboard</a>
-                @endif
+                <div class="flex items-center justify-between gap-6">
+                    @if (session()->get('authenticate'))
+                        <a href="{{ route('dashboard') }}" class="font-medium text-white  hover:underline">Dashboard</a>
+                    @endif
 
-                <button id="theme-toggle" type="button"
-                    class="text-white hover:text-gray-400 dark:text-gray-400 hover:bg-green-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-green-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                    </svg>
-                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                            fill-rule="evenodd" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-              </div>
+                    <button id="theme-toggle" type="button"
+                        class="text-white hover:text-gray-400 dark:text-gray-400 hover:bg-green-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-green-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
@@ -75,7 +74,7 @@
                     markets where technology, innovation, and capital can unlock long-term value and drive economic
                     growth.</p>
             </div>
-            <div class="space-y-8 lg:grid lg:grid-cols-2 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
                 <!-- Pasien-->
                 <div
                     class="flex flex-col justify-between p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
@@ -123,7 +122,7 @@
                     </div>
                     <h3 class="mb-4 text-2xl font-semibold mt-8">Dokter</h3>
                     <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400 mb-6">Apabila Anda seorang Dokter
-                        atau Administrator, Silahkan Login Untuk Melakukan Pelayanan Pasien dan Pengelolaan Data</p>
+                        atau Administrator, Silahkan Login Untuk Melakukan Pelayanan Pasien</p>
                     <!-- List -->
                     <ul role="list" class="mb-8 space-y-4 text-left align-bottom">
                         <li class="flex items-center space-x-3">
@@ -154,15 +153,59 @@
                                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                                     clip-rule="evenodd"></path>
                             </svg>
-                            <span>Melakukan Pengelolaan Obat (Admin)</span>
+
                         </li>
 
                     </ul>
-                    <a href="#"
+                    <a href="{{route('login.dokter')}}"
                         class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-green-900">Masuk
                         Disini</a>
                 </div>
+                <div
+                    class="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                    <div class="flex justify-center items-center ">
+                        <i class="fa-solid fa-hospital-user text-5xl"></i>
+                    </div>
+                    <h3 class="mb-4 text-2xl font-semibold mt-8">Admin</h3>
+                    <p class="font-light text-gray-500 sm:text-lg dark:text-gray-400 mb-6">Apabila Anda seorang Administrator, Silahkan Login Untuk Melakukan Pengelolaan Data</p>
+                    <!-- List -->
+                    <ul role="list" class="mb-8 space-y-4 text-left align-bottom">
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Melakukan Pemeriksaan Pasien</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Mengatur Jadwal Pemeriksaan Pasien</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
 
+                        </li>
+
+                    </ul>
+                    <a href="{{route('login.admin')}}"
+                        class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-green-900">Masuk
+                        Disini</a>
+                </div>
             </div>
         </div>
     </section>
