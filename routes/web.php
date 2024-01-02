@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PeriksaController;
 use App\Http\Controllers\PoliController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ObatController;
@@ -70,6 +71,8 @@ Route::middleware('logedIn')->group(function () {
     Route::get('/dashboard/pasien',[DashboardController::class,'dashboardPasien'])->name('pasien.home');  
     Route::get('/dashboard/admin',[DashboardController::class,'dashboardAdmin'])->name('admin.home');  
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');  
+
+    Route::get('/dashboard/pasien/{daftarPoli}',[PeriksaController::class,'index'])->name('pasien.periksa');  
 });
 //obat
 Route::get('/auth/pasien',[LoginController::class,'login_pasien'])->name('login.pasien');

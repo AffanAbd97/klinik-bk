@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dokter;
-use App\Models\JadwalPeriksa;
+use App\Models\DaftarPoli;
 use Illuminate\Http\Request;
+use App\Models\JadwalPeriksa;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
@@ -37,8 +38,9 @@ class DashboardController extends Controller
     }
     public function dashboardPasien()
     {
-        // Your code here
-        return view('pages.home-pasien.index');
+        // Your code here  
+        $daftar = DaftarPoli::paginate(5);
+        return view('pages.home-pasien.index', ['daftar' => $daftar]);
     }
     public function dashboardAdmin()
     {

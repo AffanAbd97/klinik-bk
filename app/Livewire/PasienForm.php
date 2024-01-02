@@ -2,11 +2,13 @@
 
 namespace App\Livewire;
 
-use App\Models\Dokter;
-use App\Models\JadwalPeriksa;
-use App\Models\Pasien;
+use App\Models\DaftarPoli;
 use App\Models\Poli;
+use App\Models\Dokter;
+use App\Models\Pasien;
 use Livewire\Component;
+use App\Models\JadwalPeriksa;
+use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Session;
 
 class PasienForm extends Component
@@ -14,9 +16,15 @@ class PasienForm extends Component
 
     public $poli;
     public $pasien;
+
+    #[Validate('required', message: 'Wajib memilih Jadwal Periksa')]
     public $jadwal;
 
-    public $selectedPoli; // Added property for the selected poli
+    #[Validate('required', message: 'Wajib memilih Poli')]
+    public $selectedPoli;
+
+    #[Validate('required', message: 'Tulis Keluhan Andi')]
+    public $keluhan;
     public $jadwals;
     public function render()
     {
@@ -47,5 +55,38 @@ class PasienForm extends Component
             $this->jadwals = $this->getJadwals(); // Update jadwals when poli changes
         }
     }
+    public function save()
+    {
+        $this->validate();
+        $session = Session::get('authenticate');
 
+
+        $jadwalPeriksa = new DaftarPoli();
+        $jadwalPeriksa->id_pasien = $session->user_id;
+        $jadwalPeriksa->id_jadwal = $this->jadwal;
+        $jadwalPeriksa->keluhan = $this->keluhan;
+        $latestRecord = DaftarPoli::where('id_jadwal', $this->jadwal)
+            ->whereDate('created_at', now()->toDateString())
+            ->latest('created_at')
+            ->first();
+
+        if ($latestRecord) {
+            // If a record is found, increment no_antrian by 1
+            $jadwalPeriksa->no_antrian = $latestRecord->no_antrian + 1;
+        } else {
+            // If no record is found, set no_antrian to 1
+            $jadwalPeriksa->no_antrian = 1;
+        }
+
+        $jadwalPeriksa->save();
+        return  $this->redirect('/dashboard/pasien');
+
+
+        // Post::create(
+        //     $this->only(['title', 'content'])
+        // );
+
+        // return $this->redirect('/posts')
+        //     ->with('status', 'Post successfully created.');
+    }
 }
