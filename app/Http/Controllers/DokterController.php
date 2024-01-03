@@ -6,13 +6,14 @@ use App\Models\Akun;
 use App\Models\Poli;
 use App\Models\Dokter;
 use Illuminate\Http\Request;
+use App\Models\DetailPeriksa;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class DokterController extends Controller
 {
     public function index()
     {
-        // Your code here
         return view('pages.dokter-admin.index');
     }
     public function create()
@@ -56,6 +57,14 @@ class DokterController extends Controller
         return redirect()->route('dokter.index');
     }
 
+    public function periksa() {
+        $session = Session::get('authenticate');
+    
+    }
+    public function detailPeriksa(DetailPeriksa $detailPeriksa) {
+        // Your code here
+    
+    }
     public function destroy(Dokter $dokter)
     {
 

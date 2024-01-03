@@ -73,6 +73,12 @@ Route::middleware('logedIn')->group(function () {
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');  
 
     Route::get('/dashboard/pasien/{daftarPoli}',[PeriksaController::class,'index'])->name('pasien.periksa');  
+
+    Route::get('/dashboard/dokter/periksa',[PeriksaController::class,'indexDokter'])->name('dokter.periksa');  
+    Route::get('/dashboard/dokter/periksa/{detail}',[PeriksaController::class,'createPeriksa'])->name('dokter.periksa.create');  
+    Route::post('/dashboard/dokter/periksa/{detail}',[PeriksaController::class,'savePeriksa'])->name('dokter.periksa.save');  
+    Route::get('/dashboard/dokter/periksa/{periksa}/edit',[PeriksaController::class,'editPeriksa'])->name('dokter.periksa.edit');  
+    Route::put('/dashboard/dokter/periksa/{periksa}/edit',[PeriksaController::class,'updatePeriksa'])->name('dokter.periksa.update');  
 });
 //obat
 Route::get('/auth/pasien',[LoginController::class,'login_pasien'])->name('login.pasien');

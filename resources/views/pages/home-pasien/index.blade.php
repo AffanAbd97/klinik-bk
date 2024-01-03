@@ -37,8 +37,8 @@
                                 <td class="px-4 py-3">{{ $item->no_antrian }}</td>
 
                                 <td class="px-4 py-3 flex items-center">
-                                  
-                                    <a href="{{route('pasien.periksa',['daftarPoli'=>$item])}}"
+
+                                    <a href="{{ route('pasien.periksa', ['daftarPoli' => $item]) }}"
                                         class="border border-gray-900 inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none ">
                                         <i class="fa-solid fa-eye mr-2"></i><span> Detail</span>
                                     </a>

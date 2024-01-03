@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 
 
+if(!function_exists('format_rupiah')) {
+    function format_rupiah($angka){
+        $rupiah = "Rp " . number_format($angka, 0, ',', '.');
+        return $rupiah;
+    }
+}
+
 if(!function_exists('menuActive')) {
     function menuActive(
         $uri,
