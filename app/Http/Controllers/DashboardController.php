@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Obat;
 use App\Models\Dokter;
+use App\Models\Pasien;
+use App\Models\Periksa;
 use App\Models\DaftarPoli;
 use Illuminate\Http\Request;
 use App\Models\JadwalPeriksa;
@@ -45,6 +48,30 @@ class DashboardController extends Controller
     public function dashboardAdmin()
     {
         // Your code here
-        return view('pages.home-admin.index');
+        $dokter = Dokter::all();
+        $pasien = Pasien::all();
+        $obat = Obat::all();
+        return view(
+            'pages.home-admin.index',
+            [
+                'obat' => $obat,
+                'pasien' => $pasien,
+                'dokter' => $dokter,
+            ]
+        );
+    }
+    public function riwayatPasien()
+    {
+        $session = Session::get('authenticate');
+        $jadwal_periksa = JadwalPeriksa::where('id_dokter', $session->user_id)->get();
+        $jadwal_ids = $jadwal_periksa->pluck('id')->toArray();
+        $poli = DaftarPoli::whereIn('id_jadwal', $jadwal_ids)->get();
+        $poli_ids = $poli->pluck('id')->toArray();
+        $pasien = Periksa::whereIn('id_daftar_poli', $poli_ids)->paginate(5);
+
+        return view('pages.home-dokter.riwayat.index', [
+            'pasien' => $pasien
+
+        ]);
     }
 }

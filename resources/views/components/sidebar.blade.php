@@ -74,8 +74,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('riwayat') }}"
-                        class=" {{ menuActive(['riwayat']) }} flex items-center p-2 text-base font-medium text-gray-900 rounded-lg  hover:bg-gray-100  group">
+                    <a href="{{ route('dokter.riwayat') }}"
+                        class=" {{ menuActive(['dokter.riwayat']) }} flex items-center p-2 text-base font-medium text-gray-900 rounded-lg  hover:bg-gray-100  group">
                         <i
                             class="fa-solid  fa-hospital text-2xl text-gray-500 transition duration-75  group-hover:text-gray-900 "></i>
                         <span class="ml-3">Riwayat Pasien</span>

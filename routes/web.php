@@ -30,27 +30,27 @@ Route::middleware('logedIn')->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.index');
     })->name('dashboard');
-    Route::get('/obat',[ObatController::class,'index'])->name('obat.index');
-    Route::get('/obat/tambah',[ObatController::class,'create'])->name('obat.create');
-    Route::get('/obat/{obat}',[ObatController::class,'edit'])->name('obat.edit');
-    Route::post('/obat/tambah',[ObatController::class,'store'])->name('obat.store');
-    Route::put('/obat/{obat}',[ObatController::class,'update'])->name('obat.update');
-    Route::delete('/obat/{obat}',[ObatController::class,'destroy'])->name('obat.delete');
+    Route::get('/dashboard/admin/obat',[ObatController::class,'index'])->name('obat.index');
+    Route::get('/dashboard/admin/obat/tambah',[ObatController::class,'create'])->name('obat.create');
+    Route::get('/dashboard/admin/obat/{obat}',[ObatController::class,'edit'])->name('obat.edit');
+    Route::post('/dashboard/admin/obat/tambah',[ObatController::class,'store'])->name('obat.store');
+    Route::put('/dashboard/admin/obat/{obat}',[ObatController::class,'update'])->name('obat.update');
+    Route::delete('/dashboard/admin/obat/{obat}',[ObatController::class,'destroy'])->name('obat.delete');
     
-    Route::get('/poli',[PoliController::class,'index'])->name('poli.index');
-    Route::get('/poli/tambah',[PoliController::class,'create'])->name('poli.create');
-    Route::get('/poli/{poli}',[PoliController::class,'edit'])->name('poli.edit');
-    Route::post('/poli/tambah',[PoliController::class,'store'])->name('poli.store');
-    Route::put('/poli/{poli}',[PoliController::class,'update'])->name('poli.update');
-    Route::delete('/poli/{poli}',[PoliController::class,'destroy'])->name('poli.delete');   
+    Route::get('/dashboard/admin/poli',[PoliController::class,'index'])->name('poli.index');
+    Route::get('/dashboard/admin/poli/tambah',[PoliController::class,'create'])->name('poli.create');
+    Route::get('/dashboard/admin/poli/{poli}',[PoliController::class,'edit'])->name('poli.edit');
+    Route::post('/dashboard/admin/poli/tambah',[PoliController::class,'store'])->name('poli.store');
+    Route::put('/dashboard/admin/poli/{poli}',[PoliController::class,'update'])->name('poli.update');
+    Route::delete('/dashboard/admin/poli/{poli}',[PoliController::class,'destroy'])->name('poli.delete');   
     
 
-    Route::get('/dokter',[DokterController::class,'index'])->name('dokter.index');
-    Route::get('/dokter/tambah',[DokterController::class,'create'])->name('dokter.create');
-    Route::get('/dokter/{dokter}',[DokterController::class,'edit'])->name('dokter.edit');
-    Route::post('/dokter/tambah',[DokterController::class,'store'])->name('dokter.store');
-    Route::put('/dokter/{dokter}',[DokterController::class,'update'])->name('dokter.update');
-    Route::delete('/dokter/{dokter}',[DokterController::class,'destroy'])->name('dokter.delete');  
+    Route::get('/dashboard/admin/dokter',[DokterController::class,'index'])->name('dokter.index');
+    Route::get('/dashboard/admin/dokter/tambah',[DokterController::class,'create'])->name('dokter.create');
+    Route::get('/dashboard/admin/dokter/{dokter}',[DokterController::class,'edit'])->name('dokter.edit');
+    Route::post('/dashboard/admin/dokter/tambah',[DokterController::class,'store'])->name('dokter.store');
+    Route::put('/dashboard/admin/dokter/{dokter}',[DokterController::class,'update'])->name('dokter.update');
+    Route::delete('/dashboard/admin/dokter/{dokter}',[DokterController::class,'destroy'])->name('dokter.delete');  
 
 
     Route::get('/riwayat', function () {
@@ -79,6 +79,8 @@ Route::middleware('logedIn')->group(function () {
     Route::post('/dashboard/dokter/periksa/{detail}',[PeriksaController::class,'savePeriksa'])->name('dokter.periksa.save');  
     Route::get('/dashboard/dokter/periksa/{periksa}/edit',[PeriksaController::class,'editPeriksa'])->name('dokter.periksa.edit');  
     Route::put('/dashboard/dokter/periksa/{periksa}/edit',[PeriksaController::class,'updatePeriksa'])->name('dokter.periksa.update');  
+
+    Route::get('/dashboard/dokter/riwayat',[DashboardController::class,'riwayatPasien'])->name('dokter.riwayat');  
 });
 //obat
 Route::get('/auth/pasien',[LoginController::class,'login_pasien'])->name('login.pasien');
