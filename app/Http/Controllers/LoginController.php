@@ -28,9 +28,9 @@ class LoginController extends Controller
         if ($session) {
             return redirect('/');
         }
-        return view("auth.login",[
-            'registerLink'=>false,
-            'tipe'=>'Dokter'
+        return view("auth.login", [
+            'registerLink' => false,
+            'tipe' => 'Dokter'
         ]);
     }
 
@@ -40,21 +40,21 @@ class LoginController extends Controller
         if ($session) {
             return redirect('/');
         }
-       return view("auth.login",[
-            'registerLink'=>false,
-            'tipe'=>'Administrator'
+        return view("auth.login", [
+            'registerLink' => false,
+            'tipe' => 'Administrator'
         ]);
     }
-    
+
     public function login_pasien()
     {
         $session = Session::get('authenticate');
         if ($session) {
             return redirect('/');
         }
-       return view("auth.login",[
-            'registerLink'=>true,
-            'tipe'=>'Pasien'
+        return view("auth.login", [
+            'registerLink' => true,
+            'tipe' => 'Pasien'
         ]);
     }
     public function register()
@@ -80,7 +80,7 @@ class LoginController extends Controller
         $correctPassword = Hash::check($request->password, $akun->password);
         if ($correctPassword) {
             Session::put('authenticate', $akun);
-            return redirect('/');
+            return redirect()->route('dashboard');
         }
 
         return back()->withErrors([
@@ -128,7 +128,7 @@ class LoginController extends Controller
         $pasien->no_hp = $request->telp;
         $pasien->no_rm = $newNoRm;
         $pasien->save();
- 
+
 
         $akun = new Akun();
         $akun->user_id = $pasien->id;

@@ -3,7 +3,7 @@
 @section('content')
     <section class="md:flex grid grid-cols-1 justify-between items-center mb-8 gap-4">
         <div>
-            <h1 class="font-semibold text-2xl dark:text-white">Daftar Dokter</h1>
+            <h1 class="font-semibold text-2xl dark:text-white">Daftar Pasien</h1>
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-2">
                     <li class="inline-flex items-center">
@@ -25,22 +25,20 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="m1 9 4-4-4-4" />
                             </svg>
-                            <span class="ms-1 text-lg font-medium text-gray-500 md:ms-2 dark:text-gray-400">Daftar Dokter</span>
+                            <span class="ms-1 text-lg font-medium text-gray-500 md:ms-2 dark:text-gray-400">Daftar Pasien</span>
                         </div>
                     </li>
                 </ol>
             </nav>
         </div>
 
-        <a href="{{route('dokter.create')}}"
-            class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-4 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 text-center">Tambah
-            Data</a>
+       
     </section>
 
-    @livewire('dokter-list')
+    @livewire('pasien-list')
 @endsection
 
 
 @section('title')
-   Data Dokter | Poliklinik
+   Data Pasien | Poliklinik
 @endsection

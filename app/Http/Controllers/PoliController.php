@@ -37,7 +37,7 @@ class PoliController extends Controller
   
         $poli->save();
         
-        notify()->success('Data Di Tambahkan');
+        notify()->success('Data Di Tambahkan', 'Berhasil');
 
         return redirect()->route('poli.index');
 
@@ -45,7 +45,7 @@ class PoliController extends Controller
 
     public function destroy(Poli $poli) {
         $poli->delete();
-        notify()->success('Data Di Hapus');
+        notify()->success('Data Di Hapus', 'Berhasil');
 
         return redirect()->route('poli.index');
     }
@@ -72,7 +72,7 @@ class PoliController extends Controller
     
         $poli->save();
         
-        notify()->success('Data Di Update');
+        notify()->success('Data Di Update', 'Berhasil');
 
         return redirect()->route('poli.index');
     }

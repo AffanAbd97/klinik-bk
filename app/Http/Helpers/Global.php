@@ -19,7 +19,7 @@ if(!function_exists('menuActive')) {
     function menuActive(
         $uri,
         $output = "bg-gray-200 font-semibold text-slate-700
-    font-semibold text-slate-700"
+    font-semibold text-slate-700 dark:bg-gray-700"
     ) {
         if(is_array($uri)) {
             foreach($uri as $u) {

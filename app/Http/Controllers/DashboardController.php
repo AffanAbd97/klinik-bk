@@ -60,6 +60,15 @@ class DashboardController extends Controller
             ]
         );
     }
+
+    public function pasienAdmin()
+    {
+        // Your code here
+ 
+        return view(
+            'pages.pasien-admin.index'
+        );
+    }
     public function riwayatPasien()
     {
         $session = Session::get('authenticate');
