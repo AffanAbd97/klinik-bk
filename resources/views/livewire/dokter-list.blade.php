@@ -45,7 +45,8 @@
                         <td class="px-4 py-3">{{ $item->poli->nama_poli }}</td>
                         <td class="px-4 py-3">{{ $item->poli->keterangan }}</td>
 
-                        <td class="px-4 py-3 flex items-center justify-end">
+                        <td class="px-4 py-3 flex items-center">
+                            
                             <button id="action-{{ $loop->index }}"
                                 data-dropdown-toggle="action-menu-{{ $loop->index }}"
                                 class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -63,6 +64,12 @@
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                     aria-labelledby="action-{{ $loop->index }}">
                                    
+                                    <li>
+                                        <a href="{{route('dokter.edit',['dokter'=>$item])}}"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-left ">
+                                            <span><i class="fa-solid fa-pen mr-2"></i></span> Edit
+                                        </a>
+                                    </li>
                                     <li>
                                         <button data-modal-target="delete-modal-{{ $loop->index }}"
                                             data-modal-toggle="delete-modal-{{ $loop->index }}" type="button"

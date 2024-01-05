@@ -70,16 +70,23 @@
                     <div class="w-full">
                         <label for="tglPeriksa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
                             Periksa</label>
-                        <input type="datetime-local" name="tglPeriksa" id="tglPeriksa" value="{{ $periksa->tgl_periksa }}"
+                        <input type="datetime-local" name="tglPeriksa" id="tglPeriksa"
+                            value="{{ old('tglPeriksa') ?? $periksa->tgl_periksa }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="$2999" required="">
+                            placeholder="$2999">
+
+                        @error('tglPeriksa')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="catatan"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Catatan</label>
                         <textarea name="catatan" id="" cols="20" rows="5" placeholder="catatan dokter"
-                            class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"> {{ $periksa->catatan }}</textarea>
-
+                            class="resize-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"> {{ old('catatan') ?? $periksa->catatan }}</textarea>
+                        @error('catatan')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="obat"
@@ -98,13 +105,16 @@
 
 
                             @foreach ($obat as $item)
-                                <option @selected(in_array($item->id, $selectedOptions)) value="{{ $item->id }}">{{ $item->nama_obat }}
+                                <option @selected(in_array($item->id, $selectedOptions) || in_array($item->id, old('obat', []))) value="{{ $item->id }}">{{ $item->nama_obat }}
                                     |
                                     {{ $item->kemasan }} |
                                     {{ format_rupiah($item->harga) }}</option>
                             @endforeach
 
                         </select>
+                        @error('obat')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         @php
@@ -118,9 +128,12 @@
                         <label for="biaya" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Biaya
                             Periksa</label>
                         <input type="number" name="biaya" id="biaya"
-                            value="{{ $periksa->biaya_periksa - $totalObat }}"
+                            value="{{ old('biaya')?? $periksa->biaya_periksa - $totalObat }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="10000" required="">
+                            placeholder="10000">
+                            @error('biaya')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
 
                 </div>

@@ -55,14 +55,27 @@ class PeriksaController extends Controller
     public function savePeriksa(Request $request, DaftarPoli $detail)
     {
 
-      
+
+        // dd($request->all());
+
+        $validated = $request->validate([
+            'tglPeriksa' => 'required',
+            'catatan' => 'required',
+            'obat' => 'required',
+            'biaya' => 'required',
+        ], [
+            'tglPeriksa.required' => 'Kolom Ini Diperlukan',
+            'catatan.required' => 'Kolom Ini Diperlukan',
+            'obat.required' => 'Kolom Ini Diperlukan',
+            'biaya.required' => 'Kolom Ini Diperlukan'
+        ]);
         // // $periksa = DaftarPoli::wherein;
         $total = 0;
         $obats = Obat::whereIn('id', $request->obat)->get();
         foreach ($obats as $item) {
-            $total+=$item->harga;
+            $total += $item->harga;
         }
-  
+
         $periksa = new Periksa();
         $periksa->id_daftar_poli = $request->idPeriksa;
         $periksa->tgl_periksa = $request->tglPeriksa;
@@ -78,14 +91,14 @@ class PeriksaController extends Controller
         }
 
 
-      return redirect()->route('dokter.periksa');
+        return redirect()->route('dokter.periksa');
 
     }
 
     public function editPeriksa(Request $request, Periksa $periksa)
     {
 
-      
+
         $obat = Obat::all();
         return view('pages.home-dokter.periksa.edit', [
             'periksa' => $periksa,
@@ -97,15 +110,25 @@ class PeriksaController extends Controller
     public function updatePeriksa(Request $request, Periksa $periksa)
     {
 
-      
-        DetailPeriksa::where('id_periksa',$periksa->id)->delete();
+        $validated = $request->validate([
+            'tglPeriksa' => 'required',
+            'catatan' => 'required',
+            'obat' => 'required',
+            'biaya' => 'required',
+        ], [
+            'tglPeriksa.required' => 'Kolom Ini Diperlukan',
+            'catatan.required' => 'Kolom Ini Diperlukan',
+            'obat.required' => 'Kolom Ini Diperlukan',
+            'biaya.required' => 'Kolom Ini Diperlukan'
+        ]);
+        DetailPeriksa::where('id_periksa', $periksa->id)->delete();
         $total = 0;
         $obats = Obat::whereIn('id', $request->obat)->get();
         foreach ($obats as $item) {
-            $total+=$item->harga;
+            $total += $item->harga;
         }
-  
-       
+
+
         $periksa->id_daftar_poli = $request->idPeriksa;
         $periksa->tgl_periksa = $request->tglPeriksa;
         $periksa->catatan = $request->catatan;
@@ -120,7 +143,7 @@ class PeriksaController extends Controller
         }
 
 
-      return redirect()->route('dokter.periksa');
+        return redirect()->route('dokter.periksa');
 
     }
 }

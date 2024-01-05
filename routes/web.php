@@ -4,8 +4,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PeriksaController;
 use App\Http\Controllers\PoliController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ObatController;
 
@@ -50,6 +52,10 @@ Route::middleware('logedIn')->group(function () {
 
 
         Route::get('/pasien', [DashboardController::class, 'pasienAdmin'])->name('admin.pasien');
+        Route::get('/pasien/{pasien}', [PasienController::class, 'edit'])->name('pasien.edit');
+        Route::put('/pasien/{pasien}', [PasienController::class, 'update'])->name('pasien.update');
+        Route::delete('/pasien/{pasien}', [PasienController::class, 'destroy'])->name('pasien.delete');
+
         Route::get('/dokter', [DokterController::class, 'index'])->name('dokter.index');
         Route::get('/dokter/tambah', [DokterController::class, 'create'])->name('dokter.create');
         Route::get('/dokter/{dokter}', [DokterController::class, 'edit'])->name('dokter.edit');
@@ -70,8 +76,15 @@ Route::middleware('logedIn')->group(function () {
         Route::get('/riwayat', [DashboardController::class, 'riwayatPasien'])->name('dokter.riwayat');
 
         Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+        Route::get('/jadwal/tambah', [JadwalController::class, 'create'])->name('jadwal.create');
+        Route::get('/jadwal/{jadwal}', [JadwalController::class, 'edit'])->name('jadwal.edit');
         Route::post('/jadwal', [JadwalController::class, 'store'])->name('jadwal.store');
         Route::put('/jadwal/{jadwal}', [JadwalController::class, 'update'])->name('jadwal.update');
+        Route::delete('/jadwal/{jadwal}', [JadwalController::class, 'destroy'])->name('jadwal.delete');
+
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::put('/profile/{dokter}', [ProfileController::class, 'update'])->name('profile.update');
+        Route::put('/password', [ProfileController::class, 'savePassword'])->name('profile.savePassword');
 
     });
 

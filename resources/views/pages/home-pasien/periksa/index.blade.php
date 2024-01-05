@@ -3,9 +3,9 @@
 @section('content')
     <section class="md:grid-cols-4 grid grid-cols-1 justify-between items-center mb-8 gap-4">
 
-        <div class=" bg-white w-full rounded-lg shadow-xl">
-            <div class="p-4 border-b">
-                <h2 class="text-2xl ">
+        <div class=" bg-white w-full rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-4 border-b dark:border-gray-700">
+                <h2 class="text-2xl dark:text-white">
                     Informasi Periksa
                 </h2>
                 <p class="text-sm text-gray-500">
@@ -13,69 +13,73 @@
                 </p>
             </div>
             <div>
-                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                    <p class="text-gray-600">
+                <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b dark:border-gray-700">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Nama
                     </p>
-                    <p>
+                    <p class="dark:text-white">
                         {{ $poli->pasien->nama }}
                     </p>
                 </div>
-                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                    <p class="text-gray-600">
+                <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b dark:border-gray-700">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Nomor Rekam Medis
                     </p>
-                    <p>
+                    <p class="dark:text-white">
                         {{ $poli->pasien->no_rm }}
                     </p>
                 </div>
-                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                    <p class="text-gray-600">
+                <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b dark:border-gray-700">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Keluhan
                     </p>
-                    <p>
+                    <p class="dark:text-white">
                         {{ $poli->keluhan }}
                     </p>
                 </div>
-                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                    <p class="text-gray-600">
+                <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b dark:border-gray-700">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Poli
                     </p>
-                    <p>
+                    <p class="dark:text-white">
                         {{ $poli->jadwal->dokter->poli->nama_poli }}
                     </p>
                 </div>
-                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                    <p class="text-gray-600">
+                <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b dark:border-gray-700">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Dokter
                     </p>
-                    <p>
+                    <p class="dark:text-white">
                         {{ $poli->jadwal->dokter->nama }}
                     </p>
                 </div>
-              
-                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                    <p class="text-gray-600">
+
+                <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b dark:border-gray-700">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Jadwal
                     </p>
-                    <p>
+                    <p class="dark:text-white">
                         {{ $poli->jadwal->hari }}, {{ substr($poli->jadwal->jam_mulai, 0, 5) }} -
                         {{ substr($poli->jadwal->jam_selesai, 0, 5) }}
                     </p>
                 </div>
-               
-                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                    <p class="text-gray-600">
+
+                <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b dark:border-gray-700">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Status
                     </p>
                     <div>
                         @if ($detail != null)
-                        <p class="text-center bg-green-100 text-green-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">Selesai Periksa</p>
+                            <p
+                                class="text-center bg-green-100 text-green-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+                                Selesai Periksa</p>
                         @else
-                        <p class="text-center bg-red-100 text-red-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">Belum Periksa</p>
+                            <p
+                                class="text-center bg-red-100 text-red-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+                                Belum Periksa</p>
                         @endif
-                
-                       
+
+
                     </div>
                 </div>
             </div>
@@ -84,9 +88,9 @@
 
 
 
-        <div class="col-span-3 bg-white w-full rounded-lg shadow-xl self-start">
-            <div class="p-4 border-b">
-                <h2 class="text-2xl ">
+        <div class="col-span-3 bg-white w-full rounded-lg shadow-xl self-start dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-4 border-b  dark:border-gray-700">
+                <h2 class="text-2xl dark:text-white">
                     Catatan Dokter
                 </h2>
                 <p class="text-sm text-gray-500">
@@ -95,89 +99,53 @@
             </div>
             @if ($detail != null)
                 <div>
-                    <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                        <p class="text-gray-600">
-                            Full name
+                    <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b  dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Tanggal Periksa
                         </p>
-                        <p>
-                            Jane Doe
-                        </p>
-                    </div>
-                    <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                        <p class="text-gray-600">
-                            Application for
-                        </p>
-                        <p>
-                            Product Manager
+                        <p class="dark:text-white">
+                            {{ $detail->tgl_periksa }}
                         </p>
                     </div>
-                    <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                        <p class="text-gray-600">
-                            Email Address
+                    <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b  dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Catatan
                         </p>
-                        <p>
-                            Janedoe@gmail.com
-                        </p>
-                    </div>
-                    <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                        <p class="text-gray-600">
-                            Salary
-                        </p>
-                        <p>
-                            $ 12000
+                        <p class="dark:text-white">
+                            {{ $detail->catatan }}
                         </p>
                     </div>
-                    <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b">
-                        <p class="text-gray-600">
-                            About
+                    <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b  dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Obat
                         </p>
-                        <p>
-                            Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat.
-                            Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia
-                            proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-                        </p>
-                    </div>
-                    <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4">
-                        <p class="text-gray-600">
-                            Attachments
-                        </p>
-                        <div class="space-y-2">
-                            <div class="border-2 flex items-center p-2 rounded justify-between space-x-2">
-                                <div class="space-x-2 truncate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-current inline text-gray-500"
-                                        width="24" height="24" viewBox="0 0 24 24">
-                                        <path
-                                            d="M17 5v12c0 2.757-2.243 5-5 5s-5-2.243-5-5v-12c0-1.654 1.346-3 3-3s3 1.346 3 3v9c0 .551-.449 1-1 1s-1-.449-1-1v-8h-2v8c0 1.657 1.343 3 3 3s3-1.343 3-3v-9c0-2.761-2.239-5-5-5s-5 2.239-5 5v12c0 3.866 3.134 7 7 7s7-3.134 7-7v-12h-2z" />
-                                    </svg>
-                                    <span>
-                                        resume_for_manager.pdf
-                                    </span>
-                                </div>
-                                <a href="#" class="text-purple-700 hover:underline">
-                                    Download
-                                </a>
-                            </div>
+                        <div>
+        
+                            <ul  class="dark:text-white">
+                                @foreach ($detail->detail as $item)
+                                    <li>
+                                        {{ $item->obat->nama_obat }} | {{ $item->obat->kemasan }} |
+                                        {{ format_rupiah($item->obat->harga) }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        
 
-                            <div class="border-2 flex items-center p-2 rounded justify-between space-x-2">
-                                <div class="space-x-2 truncate">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-current inline text-gray-500"
-                                        width="24" height="24" viewBox="0 0 24 24">
-                                        <path
-                                            d="M17 5v12c0 2.757-2.243 5-5 5s-5-2.243-5-5v-12c0-1.654 1.346-3 3-3s3 1.346 3 3v9c0 .551-.449 1-1 1s-1-.449-1-1v-8h-2v8c0 1.657 1.343 3 3 3s3-1.343 3-3v-9c0-2.761-2.239-5-5-5s-5 2.239-5 5v12c0 3.866 3.134 7 7 7s7-3.134 7-7v-12h-2z" />
-                                    </svg>
-                                    <span>
-                                        resume_for_manager.pdf
-                                    </span>
-                                </div>
-                                <a href="#" class="text-purple-700 hover:underline">
-                                    Download
-                                </a>
-                            </div>
                         </div>
                     </div>
+
+                    <div class="md:grid md:grid-cols-2 md:space-y-0 space-y-1 p-4 border-b  dark:border-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Total Biaya
+                        </p>
+                        <p class="dark:text-white">
+                            {{ format_rupiah($detail->biaya_periksa) }}
+                        </p>
+                    </div>
+
                 </div>
             @else
-                <div class="flex justify-center items-center text-center p-16">
+                <div class="flex justify-center items-center text-center p-16 dark:text-white">
                     <h1 class="font-semibold text-2xl"> Belum Melakukan Pemeriksaan</h1>
                 </div>
             @endif

@@ -70,8 +70,10 @@ class LoginController extends Controller
     {
 
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|exists:akun,email',
             'password' => 'required'
+        ],[
+          'email.exist'=>'Email Not Found'  
         ]);
 
 
@@ -137,6 +139,8 @@ class LoginController extends Controller
         $akun->email = $request->email;
         $akun->peran = 'Pasien';
         $akun->save();
+        notify()->success('Silahkan Login Ke Akun Anda', 'Pendaftaran Berhasil');
+        return redirect()->route('login.pasien');
     }
     public function logout()
     {

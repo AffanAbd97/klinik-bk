@@ -57,26 +57,44 @@ class DokterController extends Controller
         return redirect()->route('dokter.index');
     }
 
-    public function periksa() {
-        $session = Session::get('authenticate');
-    
-    }
-    public function detailPeriksa(DetailPeriksa $detailPeriksa) {
-        // Your code here
-    
-    }
     public function destroy(Dokter $dokter)
     {
-
+        $akun = Akun::where('user_id', $dokter->id)->first();
+        $akun->delete();
+        $dokter->delete();
+        return redirect()->route('dokter.index');
     }
     public function edit(Dokter $dokter)
     {
 
+        $poli = Poli::all();
 
+        return view('pages.dokter-admin.edit', [
+            'poli' => $poli,
+            'dokter' => $dokter
+        ]);
 
     }
     public function update(Request $request, Dokter $dokter)
     {
+        $credentials = $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'poli' => 'required',
+            'no_hp' => 'required|numeric',
 
+        ]);
+
+
+        $dokter->nama = $request->nama;
+        $dokter->alamat = $request->alamat;
+        $dokter->no_hp = $request->no_hp;
+        $dokter->id_poli = $request->poli;
+        $dokter->save();
+
+
+
+
+        return redirect()->route('dokter.index');
     }
 }
