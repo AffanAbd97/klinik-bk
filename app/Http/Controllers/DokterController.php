@@ -53,7 +53,7 @@ class DokterController extends Controller
         $akun->peran = 'Dokter';
         $akun->save();
 
-
+        notify()->success('Data Di Tambahkan', 'Berhasil');
         return redirect()->route('dokter.index');
     }
 
@@ -62,6 +62,7 @@ class DokterController extends Controller
         $akun = Akun::where('user_id', $dokter->id)->first();
         $akun->delete();
         $dokter->delete();
+        notify()->success('Data Di Hapus', 'Berhasil');
         return redirect()->route('dokter.index');
     }
     public function edit(Dokter $dokter)
@@ -92,7 +93,7 @@ class DokterController extends Controller
         $dokter->id_poli = $request->poli;
         $dokter->save();
 
-
+        notify()->success('Data Di Update', 'Berhasil');
 
 
         return redirect()->route('dokter.index');

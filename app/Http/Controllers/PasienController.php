@@ -42,7 +42,7 @@ class PasienController extends Controller
         $pasien->save();
 
 
-
+        notify()->success('Data Di Update', 'Berhasil');
 
         return redirect()->route('admin.pasien');
     }

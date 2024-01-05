@@ -39,7 +39,6 @@ class JadwalController extends Controller
     {
         $session = Session::get('authenticate');
         $id = $session->user_id;
-        // dd($request->all());   
         $credentials = $request->validate([
             'hari' => 'required',
             'jam_mulai' => 'required',
@@ -62,7 +61,7 @@ class JadwalController extends Controller
         $jadwal->id_dokter = $currenDokter->id;
         $jadwal->save();
 
-
+        notify()->success('Data Di Tambahkan', 'Berhasil');
         return redirect()->route('jadwal.index');
     }
 
@@ -70,6 +69,7 @@ class JadwalController extends Controller
     {
 
         $jadwal->delete();
+        notify()->success('Data Di Hapus', 'Berhasil');
         return redirect()->route('jadwal.index');
     }
     public function edit(JadwalPeriksa $jadwal)
@@ -106,7 +106,7 @@ class JadwalController extends Controller
         $jadwal->id_dokter = $currenDokter->id;
         $jadwal->save();
 
-
+        notify()->success('Data Di Update', 'Berhasil');
         return redirect()->route('jadwal.index');
     }
 }

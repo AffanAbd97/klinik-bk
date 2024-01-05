@@ -86,7 +86,7 @@
                         class=" {{ menuActive(['dokter.periksa']) }} flex items-center p-2 justify-between text-base font-medium text-gray-900 rounded-lg  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group">
                         <div class="flex items-center justify-start">
                             <i
-                                class="fa-solid  fa-hospital text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
+                                class="fa-solid  fa-stethoscope text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
 
                             <span class="ml-3">Periksa Pasien</span>
                         </div>
@@ -101,9 +101,9 @@
                         class=" {{ menuActive(['dokter.riwayat']) }} flex items-center p-2 justify-between text-base font-medium text-gray-900 rounded-lg  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group">
                         <div class="flex items-center justify-start">
                             <i
-                                class="fa-solid  fa-hospital text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
+                                class="fa-solid  fa-book-medical text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
 
-                            <span class="ml-3">Riwajat Pasien</span>
+                            <span class="ml-3">Riwayat Pasien</span>
                         </div>
                         <span
                             class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Dokter</span>
@@ -115,7 +115,7 @@
                         class=" {{ menuActive(['jadwal.index','jadwal.create']) }} flex items-center p-2 justify-between text-base font-medium text-gray-900 rounded-lg  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group">
                         <div class="flex items-center justify-start">
                             <i
-                                class="fa-solid  fa-hospital text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
+                                class="fa-solid  fa-calendars-days text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
 
                             <span class="ml-3">Data Jadwal</span>
                         </div>
@@ -129,7 +129,7 @@
                         class=" {{ menuActive(['profile.index']) }}  flex items-center p-2 justify-between text-base font-medium text-gray-900 rounded-lg  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group">
                         <div class="flex items-center justify-start">
                             <i
-                                class="fa-solid  fa-hospital text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
+                                class="fa-solid  fa-user text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
 
                             <span class="ml-3">Profile</span>
                         </div>
@@ -140,21 +140,6 @@
                 </li>
             @endif
 
-
-
-
-
-
-            {{-- <li>
-            <a href={{route('dashboard.tahunAjar')}}
-                class="flex items-center p-2 justify-between text-base font-medium text-gray-900 rounded-lg  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{set_active_admin(['dashboard.tahunAjar'])}}">
-            
-          <div class="flex justify-center items-center w-6 h-6">
-            <i class="fa-regular fa-calendar-days w-auto  text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
-          </div>
-                <span class="ml-3">Tahun Ajar</span>
-            </a>
-        </li> --}}
         </ul>
 
     </div>

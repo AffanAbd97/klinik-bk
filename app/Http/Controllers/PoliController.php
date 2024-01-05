@@ -8,13 +8,11 @@ use Illuminate\Http\Request;
 class PoliController extends Controller
 {public function index()
     {
-        // Your code here
+
         return view('pages.poli.index');
     }
     public function create()
     {
-
- 
         return view('pages.poli.create');
     }
 

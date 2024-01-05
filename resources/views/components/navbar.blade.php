@@ -19,7 +19,7 @@
                 <span class="sr-only">Toggle sidebar</span>
             </button>
             <a href="\" class="flex items-center justify-between mr-4">
-                <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="mr-3 h-8" alt="Flowbite Logo" />
+                <i class="fa-solid fa-hospital text-2xl text-green-700 me-2"></i>
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Poliklinik</span>
             </a>
 

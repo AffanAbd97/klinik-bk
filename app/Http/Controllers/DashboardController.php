@@ -26,7 +26,7 @@ class DashboardController extends Controller
         } else {
             return redirect('/');
         }
-        // Your code here
+     
 
     }
     public function dashboardDokter()
@@ -49,7 +49,7 @@ class DashboardController extends Controller
     }
     public function dashboardPasien()
     {
-        // Your code here  
+
         $daftar = DaftarPoli::paginate(5);
         return view('pages.home-pasien.index', ['daftar' => $daftar]);
     }
@@ -71,8 +71,7 @@ class DashboardController extends Controller
 
     public function pasienAdmin()
     {
-        // Your code here
- 
+       
         return view(
             'pages.pasien-admin.index'
         );

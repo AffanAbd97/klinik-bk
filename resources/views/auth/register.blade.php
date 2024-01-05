@@ -3,7 +3,7 @@
 @section('content')
     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 class="text-xl text-center   font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-            Sign in to your account
+    Daftarkan Diri Anda
         </h1>
         <form class="space-y-4 md:space-y-6" action="{{ route('save.pasien') }}" method="POST">
             @csrf

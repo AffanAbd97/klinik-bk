@@ -13,7 +13,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        // Your code here
+ 
         $session = Session::get('authenticate');
         $dokter = Dokter::find($session->user_id);
         $poli = Poli::all();
@@ -42,7 +42,7 @@ class ProfileController extends Controller
         $dokter->no_hp = $request->no_hp;
         $dokter->poli = $request->id_poli;
         $dokter->save();
-
+        notify()->success('Data Di Update', 'Berhasil');
         return redirect()->back();
 
     }
@@ -63,7 +63,7 @@ class ProfileController extends Controller
         $akun = Akun::where('id', $session->id)->first();
         $akun->password = Hash::make($request->password);
         $akun->save();
-       
+        notify()->success('Silahkan Login KEmbali', 'Berhasil Mengubah Password');
         return redirect()->route('logout');
 
     }

@@ -39,11 +39,6 @@ class PeriksaController extends Controller
     public function createPeriksa(DaftarPoli $detail)
     {
 
-
-        // $periksa = DaftarPoli::wherein;
-
-
-        // $detail = Periksa::where('id_daftar_poli', $periksa->id)->first();
         $obat = Obat::all();
         return view('pages.home-dokter.periksa.create', [
             'detail' => $detail,
@@ -54,9 +49,6 @@ class PeriksaController extends Controller
 
     public function savePeriksa(Request $request, DaftarPoli $detail)
     {
-
-
-        // dd($request->all());
 
         $validated = $request->validate([
             'tglPeriksa' => 'required',
@@ -69,7 +61,7 @@ class PeriksaController extends Controller
             'obat.required' => 'Kolom Ini Diperlukan',
             'biaya.required' => 'Kolom Ini Diperlukan'
         ]);
-        // // $periksa = DaftarPoli::wherein;
+     
         $total = 0;
         $obats = Obat::whereIn('id', $request->obat)->get();
         foreach ($obats as $item) {
@@ -90,7 +82,7 @@ class PeriksaController extends Controller
             $detail->save();
         }
 
-
+        notify()->success('Data Di Simpan', 'Berhasil');
         return redirect()->route('dokter.periksa');
 
     }
@@ -142,7 +134,7 @@ class PeriksaController extends Controller
             $detail->save();
         }
 
-
+        notify()->success('Data Di Update', 'Berhasil');
         return redirect()->route('dokter.periksa');
 
     }
