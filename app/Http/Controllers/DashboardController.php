@@ -35,7 +35,7 @@ class DashboardController extends Controller
         $poli = Dokter::find($session->user_id)->first()->poli;
         
         $session = Session::get('authenticate');
-        $jadwals = JadwalPeriksa::where('id_dokter', $session->user_id)->get();
+        $jadwals = JadwalPeriksa::where('id_dokter', $session->user_id)->where('aktif','1')->get();
         $jadwal_ids = $jadwals->pluck('id')->toArray();
         $daftarPoli = DaftarPoli::whereIn('id_jadwal', $jadwal_ids)->get();
         $poli_ids = $daftarPoli->pluck('id')->toArray();

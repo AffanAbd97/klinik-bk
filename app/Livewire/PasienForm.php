@@ -28,6 +28,7 @@ class PasienForm extends Component
     public $jadwals;
     public function render()
     {
+       
         $session = Session::get('authenticate');
         $this->pasien = Pasien::find($session->user_id);
         $this->jadwals = $this->getJadwals();
@@ -41,12 +42,14 @@ class PasienForm extends Component
     public function getJadwals()
     {
         if ($this->selectedPoli) {
-            $dokter = Dokter::where('id_poli', $this->selectedPoli)->has('jadwal')->get();
-
-            return $dokter;
+            $dokter = Dokter::where('id_poli', $this->selectedPoli)->get();
+            $dokterIds = $dokter->pluck('id')->toArray();
+            $dataJadwal = JadwalPeriksa::whereIn('id_dokter', $dokterIds)->where('aktif','1')->get();
+            
+            return $dataJadwal;
         }
 
-        return collect(); // Return an empty collection if no poli is selected
+        return collect(); 
     }
 
     public function updated($field)

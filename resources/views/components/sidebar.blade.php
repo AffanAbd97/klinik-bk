@@ -115,8 +115,8 @@
                         class=" {{ menuActive(['jadwal.index','jadwal.create']) }} flex items-center p-2 justify-between text-base font-medium text-gray-900 rounded-lg  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group">
                         <div class="flex items-center justify-start">
                             <i
-                                class="fa-solid  fa-calendars-days text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
-
+                                class="fa-solid fa-calendar-days text-2xl text-gray-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white group-hover:text-gray-900 "></i>
+                                
                             <span class="ml-3">Data Jadwal</span>
                         </div>
                         <span

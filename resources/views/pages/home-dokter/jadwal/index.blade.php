@@ -47,6 +47,9 @@
                             #
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Dokter
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Hari
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -54,6 +57,9 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Jam Selesai
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Status
                         </th>
                         <th scope="col" class="px-4 py-3">
                             <span class="sr-only">Actions</span>
@@ -63,8 +69,11 @@
                 <tbody>
                     @forelse ($dataJadwal as $item)
                         <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
+                            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}</th>
+                            <td class="px-6 py-4">
+                                {{ $item->dokter->nama }}
+                            </td>
                             <td class="px-6 py-4">
                                 {{ $item->hari }}
                             </td>
@@ -74,10 +83,21 @@
                             <td class="px-6 py-4">
                                 {{ substr($item->jam_selesai, 0, 5) }}
                             </td>
+                            <td class="px-6 py-4">
+                                @if ($item->aktif == '0')
+                                    <span
+                                        class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Tidak
+                                        Aktif</span>
+                                @else
+                                    <span
+                                        class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Aktif</span>
+                                @endif
+
+                            </td>
 
 
 
-                            <td class="px-4 py-3 flex items-center justify-end">
+                            <td class="px-4 py-3 flex items-center">
                                 <button id="action-{{ $loop->index }}"
                                     data-dropdown-toggle="action-menu-{{ $loop->index }}"
                                     class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -131,7 +151,8 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apa Anda Yakin Ingin Menghapus
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apa Anda Yakin Ingin
+                            Menghapus
                             Data ini?</h3>
                         <form action={{ route('jadwal.delete', ['jadwal' => $item]) }} method="POST">
                             @csrf
@@ -152,7 +173,9 @@
         </tr>
     @empty
         <tr class="border-b ">
-            <th scope="row" class="px-4 py-3 font-medium text-xl text-gray-900 dark:text-white whitespace-nowrap text-center" colspan="5">
+            <th scope="row"
+                class="px-4 py-3 font-medium text-xl text-gray-900 dark:text-white whitespace-nowrap text-center"
+                colspan="5">
                 Data
                 Tidak
                 Ditemukan</th>

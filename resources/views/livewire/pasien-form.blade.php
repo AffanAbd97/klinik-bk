@@ -1,5 +1,7 @@
 <div class="col-span-1 bg-white rounded shadow p-6 dark:bg-gray-800 dark:border-gray-70" wire:debug>
-    {{-- Close your eyes. Count to one. That is how long forever feels. --}}
+    <h2 class="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+        Daftar Poli
+    </h2>
     <form wire:submit="save" class="space-y-8" >
         @csrf
         <div>
@@ -37,7 +39,7 @@
                 <option selected>Pilih Jadwal</option>
          
                 @forelse ($jadwals as $item)
-                    <option value="{{ $item->jadwal->id }}">{{ $item->jadwal->dokter->nama}} | {{ $item->jadwal->hari}}, {{ substr($item->jadwal->jam_mulai, 0, 5)}} - {{substr($item->jadwal->jam_selesai, 0, 5)}}</option>
+                    <option value="{{ $item->id }}">{{ $item->dokter->nama}} | {{ $item->hari}}, {{ substr($item->jam_mulai, 0, 5)}} - {{substr($item->jam_selesai, 0, 5)}}</option>
                 @empty
                     <option value="" @readonly(true)>Poli Kosong</option>
                 @endforelse

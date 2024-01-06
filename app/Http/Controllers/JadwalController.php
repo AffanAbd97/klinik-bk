@@ -37,6 +37,7 @@ class JadwalController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $session = Session::get('authenticate');
         $id = $session->user_id;
         $credentials = $request->validate([
@@ -59,6 +60,15 @@ class JadwalController extends Controller
         $jadwal->jam_mulai = $request->jam_mulai;
         $jadwal->jam_selesai = $request->jam_selesai;
         $jadwal->id_dokter = $currenDokter->id;
+        if (isset($request->status)) {
+            $jadwal->aktif = '1';
+
+        } else {
+            $jadwal->aktif = '0';
+
+        }
+
+
         $jadwal->save();
 
         notify()->success('Data Di Tambahkan', 'Berhasil');
@@ -81,7 +91,7 @@ class JadwalController extends Controller
     }
     public function update(Request $request, JadwalPeriksa $jadwal)
     {
-
+      
         $session = Session::get('authenticate');
         $id = $session->user_id;
         $credentials = $request->validate([
@@ -95,15 +105,24 @@ class JadwalController extends Controller
         $dokterIds = $dokters->pluck('id')->toArray();
         $dataJadwal = JadwalPeriksa::whereIn('id_dokter', $dokterIds)->get();
 
-        if ($dataJadwal->contains('hari', $request->hari)) {
-            return redirect()->back()->withErrors(['hari' => 'The selected hari already exists.']);
-        }
+        // if ($dataJadwal->contains('hari', $request->hari)) {
+        //     return redirect()->back()->withErrors(['hari' => 'The selected hari already exists.']);
+        // }
+
 
 
         $jadwal->hari = $request->hari;
         $jadwal->jam_mulai = $request->jam_mulai;
         $jadwal->jam_selesai = $request->jam_selesai;
         $jadwal->id_dokter = $currenDokter->id;
+
+        if (isset($request->status)) {
+            $jadwal->aktif = '1';
+
+        } else {
+            $jadwal->aktif = '0';
+
+        }
         $jadwal->save();
 
         notify()->success('Data Di Update', 'Berhasil');

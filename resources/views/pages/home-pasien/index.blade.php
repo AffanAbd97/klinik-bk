@@ -4,10 +4,13 @@
     <section class="md:grid-cols-4 grid grid-cols-1 justify-between items-center mb-8 gap-4">
 
         @livewire('pasien-form')
-        <div class="bg-white dark:bg-gray-800 dark:border-gray-70 shadow-md sm:rounded-lg overflow-hidden col-span-3 self-start">
-
+        <div class="bg-white dark:bg-gray-800 dark:border-gray-70 shadow-md sm:rounded-lg overflow-hidden col-span-3 self-start p-6">
+          
+            <h2 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white mb-8">
+                Riwayat Poli
+            </h2>
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded-md">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-4 py-3">#</th>
