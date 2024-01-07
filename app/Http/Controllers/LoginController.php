@@ -73,7 +73,7 @@ class LoginController extends Controller
             'email' => 'required|email|exists:akun,email',
             'password' => 'required'
         ],[
-          'email.exist'=>'Email Not Found'  
+          'email.exists'=>'Email Not Found'  
         ]);
 
 

@@ -69,15 +69,14 @@ class PasienForm extends Component
         $jadwalPeriksa->id_jadwal = $this->jadwal;
         $jadwalPeriksa->keluhan = $this->keluhan;
         $latestRecord = DaftarPoli::where('id_jadwal', $this->jadwal)
-            ->whereDate('created_at', now()->toDateString())
             ->latest('created_at')
             ->first();
 
         if ($latestRecord) {
-            // If a record is found, increment no_antrian by 1
+           
             $jadwalPeriksa->no_antrian = $latestRecord->no_antrian + 1;
         } else {
-            // If no record is found, set no_antrian to 1
+           
             $jadwalPeriksa->no_antrian = 1;
         }
 
@@ -85,11 +84,6 @@ class PasienForm extends Component
         return  $this->redirect('/dashboard/pasien');
 
 
-        // Post::create(
-        //     $this->only(['title', 'content'])
-        // );
 
-        // return $this->redirect('/posts')
-        //     ->with('status', 'Post successfully created.');
     }
 }
