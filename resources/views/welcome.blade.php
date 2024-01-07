@@ -18,7 +18,7 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
-    <title>@yield('title')</title>
+    <title>Poliklinik</title>
 </head>
 
 <body>
