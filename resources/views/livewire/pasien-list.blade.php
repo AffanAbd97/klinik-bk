@@ -37,7 +37,7 @@
             <tbody>
                 @forelse ($pasien as $item)
                     <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap ">
+                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $loop->iteration }}</th>
                         <td class="px-4 py-3">{{ $item->nama }}</td>
                         <td class="px-4 py-3">{{ $item->no_hp }}</td>

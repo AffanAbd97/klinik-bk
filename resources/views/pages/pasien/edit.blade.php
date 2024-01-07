@@ -3,7 +3,7 @@
 @section('content')
 <section class="md:flex grid grid-cols-1 justify-between items-center mb-8 gap-4">
     <div>
-        <h1 class="font-semibold text-2xl dark:text-white">Tambah Data Dokter</h1>
+        <h1 class="font-semibold text-2xl dark:text-white">Tambah Data Pasien</h1>
         <nav class="flex" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2">
                 <li class="inline-flex items-center">
@@ -42,7 +42,7 @@
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
                         <label for="no_rm"
-                            class="block mb-2 text-sm font-medium  text-gray-900dark:text-white">No
+                            class="block mb-2 text-sm font-medium  text-gray-900 dark:text-white">No
                             Rekam Medis</label>
                         <input type="text" name="no_rm" id="no_rm" value="{{$pasien->no_rm }}" disabled readonly
                             class="bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -77,7 +77,7 @@
                     <div class="sm:col-span-2">
                         <label for="no_ktp"
                             class="block mb-2 text-sm font-medium  {{ $errors->has('no_ktp') ? 'text-red-600' : 'text-gray-900' }} dark:text-white">No
-                            Telepon</label>
+                            KTP</label>
                         <input type="text" name="no_ktp" id="no_ktp" value="{{ old('no_ktp') ??$pasien->no_ktp }}"
                             class="bg-gray-50 border {{ $errors->has('no_ktp') ? 'border-red-600' : 'border-gray-300' }}  text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Nomor Telepon">
@@ -88,7 +88,7 @@
                     </div>
                         <div class="sm:col-span-2">
                             <label for="alamat"
-                                class="block mb-2 text-sm font-medium  {{ $errors->has('alamat') ? 'text-red-600' : 'text-gray-900' }}  dark:text-white">Alamat Rumah Dokter</label>
+                                class="block mb-2 text-sm font-medium  {{ $errors->has('alamat') ? 'text-red-600' : 'text-gray-900' }}  dark:text-white">Alamat Rumah</label>
                             <textarea id="alamat" rows="4" name="alamat"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border {{ $errors->has('alamat') ? 'border-red-600' : 'border-gray-300' }} focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Informasi Detail Poli">{{ old('alamat') ??$pasien->alamat  }}</textarea>
