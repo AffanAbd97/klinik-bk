@@ -31,6 +31,7 @@
                 </a>
 
                 <div class="flex items-center justify-between gap-6">
+                    
                     @if (session()->get('authenticate'))
                         <a href="{{ route('dashboard') }}" class="font-medium text-white  hover:underline">Dashboard</a>
                     @endif

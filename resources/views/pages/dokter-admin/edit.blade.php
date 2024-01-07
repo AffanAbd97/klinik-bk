@@ -3,7 +3,7 @@
 @section('content')
 <section class="md:flex grid grid-cols-1 justify-between items-center mb-8 gap-4">
     <div>
-        <h1 class="font-semibold text-2xl dark:text-white">Tambah Data Dokter</h1>
+        <h1 class="font-semibold text-2xl dark:text-white">Ubah Data Dokter</h1>
         <nav class="flex" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2">
                 <li class="inline-flex items-center">
@@ -25,7 +25,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg>
-                        <span class="ms-1 text-lg font-medium text-gray-500 md:ms-2 dark:text-gray-400">Tambah Dokter</span>
+                        <span class="ms-1 text-lg font-medium text-gray-500 md:ms-2 dark:text-gray-400">Ubah Dokter</span>
                     </div>
                 </li>
             </ol>
