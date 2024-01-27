@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('jadwal_periksa', function (Blueprint $table) {
       
-            $table->enum('aktif', ['0', '1'])->default(1);
+            $table->enum('aktif', ['T', 'Y'])->default("T");
            
         });
     }

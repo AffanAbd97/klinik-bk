@@ -57,7 +57,7 @@ class JadwalController extends Controller
                 return redirect()->back()->withErrors(['hari' => 'The selected hari already exists.']);
             }
         }
-        $dataAktiv = JadwalPeriksa::where('id_dokter',$currenDokter->id)->where('aktif', '1')->first();
+        $dataAktiv = JadwalPeriksa::where('id_dokter',$currenDokter->id)->where('aktif', 'Y')->first();
 
         $jadwal = new JadwalPeriksa();
         $jadwal->hari = $request->hari;
@@ -69,13 +69,14 @@ class JadwalController extends Controller
 
             if ($dataAktiv) {
                 if ($dataAktiv->id != $jadwal->id) {
-                    $dataAktiv->aktif = '0';
+                    $dataAktiv->aktif = 'T';
                     $dataAktiv->save();
+                    $conflik = true;
                 }
             }
-            $jadwal->aktif = '1';
+            $jadwal->aktif = 'Y';
         } else {
-            $jadwal->aktif = '0';
+            $jadwal->aktif = 'T';
         }
 
 
@@ -120,7 +121,7 @@ class JadwalController extends Controller
         $dokters = Dokter::where('id_poli', $currenDokter->id_poli)->get();
         $dokterIds = $dokters->pluck('id')->toArray();
         $dataJadwal = JadwalPeriksa::whereIn('id_dokter', $dokterIds)->get();
-        $dataAktiv = JadwalPeriksa::where('id_dokter', $jadwal->id_dokter)->where('aktif', '1')->first();
+        $dataAktiv = JadwalPeriksa::where('id_dokter', $jadwal->id_dokter)->where('aktif', 'Y')->first();
         // if ($dataJadwal->contains('hari', $request->hari)) {
         //     return redirect()->back()->withErrors(['hari' => 'The selected hari already exists.']);
         // }
@@ -136,14 +137,14 @@ class JadwalController extends Controller
 
             if ($dataAktiv) {
                 if ($dataAktiv->id != $jadwal->id) {
-                    $dataAktiv->aktif = '0';
+                    $dataAktiv->aktif = 'T';
                     $dataAktiv->save();
                     $conflik = true;
                 }
             }
-            $jadwal->aktif = '1';
+            $jadwal->aktif = 'Y';
         } else {
-            $jadwal->aktif = '0';
+            $jadwal->aktif = 'T';
         }
         $jadwal->save();
         if ($conflik) {

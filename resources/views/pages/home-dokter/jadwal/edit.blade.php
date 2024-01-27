@@ -47,7 +47,7 @@
 
                         <label for="hari"
                             class="block mb-2 text-sm font-medium {{ $errors->has('hari') ? 'text-red-600' : 'text-gray-900' }} dark:text-white ">Hari</label>
-                        <select id="hari" name="hari"
+                        <select id="hari" name="hari" @readonly(true) disabled
                             class="bg-gray-50 border {{ $errors->has('hari') ? 'border-red-600' : 'border-gray-300 dark:border-gray-600' }}  text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option @readonly(true) value="">Pilih Hari</option>
                             @foreach ($haris as $item)
@@ -58,7 +58,8 @@
                         @error('hari')
                             <p id="outlined_error_help" class="mt-2 text-xs text-red-600">{{ $message }}</p>
                         @enderror
-
+                        <input name="hari" id="hari" value="{{$jadwal->hari}}" @readonly(true)
+                        class="hidden">
                     </div>
                     <div class="w-full">
                         <label for="jam_mulai"
