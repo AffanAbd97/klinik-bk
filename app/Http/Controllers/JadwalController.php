@@ -19,10 +19,11 @@ class JadwalController extends Controller
 
         $dataJadwal = JadwalPeriksa::where('id_dokter', $id)->paginate(5);
 
-        return view('pages.home-dokter.jadwal.index', [
-            'dataJadwal' => $dataJadwal
-        ]);
 
+        return view('pages.home-dokter.jadwal.index', [
+            'dataJadwal' => $dataJadwal,
+
+        ]);
     }
 
     public function create()
@@ -31,7 +32,6 @@ class JadwalController extends Controller
 
 
         return view('pages.home-dokter.jadwal.create');
-
     }
 
 
@@ -51,27 +51,41 @@ class JadwalController extends Controller
         $dokterIds = $dokters->pluck('id')->toArray();
         $dataJadwal = JadwalPeriksa::whereIn('id_dokter', $dokterIds)->get();
 
-        if ($dataJadwal->contains('hari', $request->hari)) {
-            return redirect()->back()->withErrors(['hari' => 'The selected hari already exists.']);
+        if (isset($request->status)) {
+
+            if ($dataJadwal->contains('hari', $request->hari)) {
+                return redirect()->back()->withErrors(['hari' => 'The selected hari already exists.']);
+            }
         }
+        $dataAktiv = JadwalPeriksa::where('id_dokter',$currenDokter->id)->where('aktif', '1')->first();
 
         $jadwal = new JadwalPeriksa();
         $jadwal->hari = $request->hari;
         $jadwal->jam_mulai = $request->jam_mulai;
         $jadwal->jam_selesai = $request->jam_selesai;
         $jadwal->id_dokter = $currenDokter->id;
+        $conflik = false;
         if (isset($request->status)) {
-            $jadwal->aktif = '1';
 
+            if ($dataAktiv) {
+                if ($dataAktiv->id != $jadwal->id) {
+                    $dataAktiv->aktif = '0';
+                    $dataAktiv->save();
+                }
+            }
+            $jadwal->aktif = '1';
         } else {
             $jadwal->aktif = '0';
-
         }
 
 
         $jadwal->save();
+        if ($conflik) {
+            notify()->info('Terdapat Jadwal Yang Dinonaktifkan', 'Data Di Update');
+        }else{
 
-        notify()->success('Data Di Tambahkan', 'Berhasil');
+            notify()->success('Data Di Update', 'Berhasil');
+        }
         return redirect()->route('jadwal.index');
     }
 
@@ -84,14 +98,16 @@ class JadwalController extends Controller
     }
     public function edit(JadwalPeriksa $jadwal)
     {
+        $dataAktiv = JadwalPeriksa::where('id_dokter', $jadwal->id_dokter)->where('aktif', '1')->first();
+        // dd($dataAktiv->id);
         return view('pages.home-dokter.jadwal.edit', [
-            'jadwal' => $jadwal
+            'jadwal' => $jadwal,
+            'dataAktiv' => $dataAktiv,
         ]);
-
     }
     public function update(Request $request, JadwalPeriksa $jadwal)
     {
-      
+
         $session = Session::get('authenticate');
         $id = $session->user_id;
         $credentials = $request->validate([
@@ -104,7 +120,7 @@ class JadwalController extends Controller
         $dokters = Dokter::where('id_poli', $currenDokter->id_poli)->get();
         $dokterIds = $dokters->pluck('id')->toArray();
         $dataJadwal = JadwalPeriksa::whereIn('id_dokter', $dokterIds)->get();
-
+        $dataAktiv = JadwalPeriksa::where('id_dokter', $jadwal->id_dokter)->where('aktif', '1')->first();
         // if ($dataJadwal->contains('hari', $request->hari)) {
         //     return redirect()->back()->withErrors(['hari' => 'The selected hari already exists.']);
         // }
@@ -115,17 +131,27 @@ class JadwalController extends Controller
         $jadwal->jam_mulai = $request->jam_mulai;
         $jadwal->jam_selesai = $request->jam_selesai;
         $jadwal->id_dokter = $currenDokter->id;
-
+        $conflik = false;
         if (isset($request->status)) {
-            $jadwal->aktif = '1';
 
+            if ($dataAktiv) {
+                if ($dataAktiv->id != $jadwal->id) {
+                    $dataAktiv->aktif = '0';
+                    $dataAktiv->save();
+                    $conflik = true;
+                }
+            }
+            $jadwal->aktif = '1';
         } else {
             $jadwal->aktif = '0';
-
         }
         $jadwal->save();
+        if ($conflik) {
+            notify()->info('Terdapat Jadwal Yang Dinonaktifkan', 'Data Di Update');
+        }else{
 
-        notify()->success('Data Di Update', 'Berhasil');
+            notify()->success('Data Di Update', 'Berhasil');
+        }
         return redirect()->route('jadwal.index');
     }
 }
