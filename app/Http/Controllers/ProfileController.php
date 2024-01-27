@@ -31,7 +31,7 @@ class ProfileController extends Controller
         $credentials = $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
-            'poli' => 'required',
+          
             'no_hp' => 'required|numeric',
 
         ], [
@@ -40,7 +40,6 @@ class ProfileController extends Controller
         $dokter->nama = $request->nama;
         $dokter->alamat = $request->alamat;
         $dokter->no_hp = $request->no_hp;
-        $dokter->poli = $request->id_poli;
         $dokter->save();
         notify()->success('Data Di Update', 'Berhasil');
         return redirect()->back();
